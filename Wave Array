@@ -1,0 +1,53 @@
+/*************************************************************************************************
+Given a sorted array arr[] of non-repeating integers without duplicates. Sort the array into a wave-like array and return it. In other words, arrange the elements into a sequence such that a1 >= a2 <= a3 >= a4 <= a5..... (considering the increasing lexicographical order).
+
+Input:
+The first line contains an integer T, depicting total number of test cases. T testcases follow. The first line of each testcase contains an integer N depicting the size of the array. The second line contains N space separated elements of the array.
+
+Output:
+For each testcase, in a new line, print the array into wave-like array.
+
+Constraints:
+1 ≤ T ≤ 100
+1 ≤ N ≤ 106
+0 ≤ A[i] ≤107
+
+Example:
+Input:
+1
+5
+1 2 3 4 5
+Output:
+2 1 4 3 5
+************************************************************************************************/
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    vector<int> array;
+	    int n,x;
+	    cin>>n;
+	    for(int i=0;i<n;i++)
+	    {
+	        cin>>x;
+	        array.push_back(x);
+	    }
+	    sort(array.begin(),array.end());
+	    for(int i=1;i<n;i+=2)
+	    {
+	        x=array[i-1];
+	        array[i-1]=array[i];
+	        array[i]=x;
+	    }
+	   // cout<<array.size()<<"hii";
+	    for(int i=0;i<n;i++)cout<<array[i]<<" ";
+	    cout<<endl;
+	}
+	return 0;
+}
